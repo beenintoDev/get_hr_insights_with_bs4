@@ -1,10 +1,11 @@
-# HR 인사이트 콜랙팅... with findall function
+# HR Insight Collecting basics with requests, bs4
 
 import requests
 from bs4 import BeautifulSoup
 
 url = "http://www.findjob.co.kr/job/guide/jobNewsList.asp"
 response = requests.get(url)
+
 contents = response.text
 soup = BeautifulSoup(contents, "html.parser")
 
@@ -27,10 +28,3 @@ for news in div_group:
 발행 일자: {article_time.text}"""
     )
     print()
-
-
-"""
-article_title = div_group.find("dt", class_="lineItem-full__txt__tit")
-article_summary = div_group.fnd("dd", class_="lineItem-full__txt__con")
-article_time = div_group.find("span", class_="date")
-"""
